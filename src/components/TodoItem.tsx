@@ -3,13 +3,14 @@ import { ITodo } from '../types/types'
 
 interface TodoItemProps {
 	todo: ITodo
+	onClick: (todo: ITodo) => void
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({todo}) => {
+const TodoItem: React.FC<TodoItemProps> = ({todo, onClick}) => {
 	return (
-		<div>
+		<div style={{display: 'flex'}}>
 			<input type={'checkbox'} checked={todo.completed}/>
-			{todo.id}. {todo.title}
+			<div onClick={() => onClick(todo)}>{todo.id}. {todo.title}</div>
 		</div>
 	)
 }
